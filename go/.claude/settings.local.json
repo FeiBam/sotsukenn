@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./sotsukenn-server migrate:*)",
+      "Bash(go build:*)",
+      "Bash(sqlite3:*)"
+    ]
+  }
+}

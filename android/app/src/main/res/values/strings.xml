@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyApp</string>
+
+    <!-- Server Connection -->
+    <string name="server_url_hint">Server URL (e.g., http://example.com:8080/)</string>
+    <string name="connect">Connect</string>
+
+    <!-- Login -->
+    <string name="login_title">Login</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login">Login</string>
+
+    <!-- Home -->
+    <string name="welcome">Welcome!</string>
+    <string name="logout">Logout</string>
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "815457170074",
+    "project_id": "sotsukenn-2d3d7",
+    "storage_bucket": "sotsukenn-2d3d7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815457170074:android:d8ce71dbc7a5eda22f6523",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpZt2e_X7C6DO5drZA9szt2dYvx2J1J4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

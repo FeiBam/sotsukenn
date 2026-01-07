@@ -1,0 +1,49 @@
+# Zabbix Agent配置示例 - Frigate监控
+# 将此配置添加到 /etc/zabbix/zabbix_agentd.conf 或 /etc/zabbix_agentd.conf.d/frigate.conf
+
+# ====================================
+# Frigate监控 UserParameter配置
+# ====================================
+#
+# 使用说明：
+# 1. 将脚本 zabbix_frigate_monitor.sh 复制到 /usr/local/bin/
+# 2. 设置JWT Token环境变量或在脚本中配置
+# 3. 重启Zabbix Agent: systemctl restart zabbix-agent
+#
+# 获取JWT Token的方法：
+# - 通过API登录: curl -X POST http://your-server/api/auth/login -d '{"username":"xxx","password":"xxx"}'
+# - Token在响应的 body.token 字段中
+
+# 统一监控脚本（推荐）
+# 调用格式: frigate.all[<jwt_token>]
+# 返回: JSON格式的所有监控指标
+UserParameter=frigate.all[*],/usr/local/bin/zabbix_frigate_monitor.sh
+
+# 单独监控指标
+# Frigate在线状态 (0=离线, 1=在线)
+UserParameter=frigate.status[*],/usr/local/bin/zabbix_frigate_monitor.sh status
+
+# Frigate API响应时间（毫秒）
+UserParameter=frigate.response_time[*],/usr/local/bin/zabbix_frigate_monitor.sh response_time
+
+# 在线摄像头数量
+UserParameter=frigate.cameras.online[*],/usr/local/bin/zabbix_frigate_monitor.sh cameras_online
+
+# 离线摄像头数量
+UserParameter=frigate.cameras.offline[*],/usr/local/bin/zabbix_frigate_monitor.sh cameras_offline
+
+# 最后事件时间（Unix时间戳）
+UserParameter=frigate.last_event[*],/usr/local/bin/zabbix_frigate_monitor.sh last_event
+
+# 人类检测总数
+UserParameter=frigate.person.count[*],/usr/local/bin/zabbix_frigate_monitor.sh person_count
+
+# 识别到的人员数量
+UserParameter=frigate.person.recognized[*],/usr/local/bin/zabbix_frigate_monitor.sh recognized_count
+
+# ====================================
+# 高级配置 - 自定义API URL
+# ====================================
+# 如果API不在默认的localhost:8080，可以修改脚本中的API_URL变量
+# 或者在调用时覆盖：
+# UserParameter=frigate.custom[*],API_URL=http://192.168.1.100:8080 JWT_TOKEN=$1 /usr/local/bin/zabbix_frigate_monitor.sh $2
